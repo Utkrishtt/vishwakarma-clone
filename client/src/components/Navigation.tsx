@@ -45,9 +45,14 @@ export default function Navigation() {
               </a>
             </Link>
           ))}
+          <a href="/vishwakarma-interiorDecorators.pdf" >
+                
           <button className="px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-background transition-all duration-300 text-sm font-medium">
-            Inquire Now
+            Brochure
+            
+
           </button>
+              </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -74,7 +79,12 @@ export default function Navigation() {
               </Link>
             ))}
             <button className="w-full mt-4 px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-background transition-all duration-300 text-sm font-medium">
-              Inquire Now
+              Brochure
+              {/* add link to download /vishwakarma-interiorDecorators.pdf */} 
+              <Link href="/vishwakarma-interiorDecorators.pdf" download>
+                Download
+              </Link>
+
             </button>
           </div>
         </div>
