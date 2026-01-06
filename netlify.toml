@@ -6,3 +6,7 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[env]
+  VITE_ANALYTICS_ENDPOINT = "https://your-umami-endpoint.example"
+  VITE_ANALYTICS_WEBSITE_ID = "your-website-id"
