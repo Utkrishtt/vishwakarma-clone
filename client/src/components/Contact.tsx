@@ -151,6 +151,12 @@ export default function Contact() {
                   >
                     +91 9871569819
                   </a>
+                  <a
+                    href="tel:+918470802035"
+                    className="block text-foreground hover:text-accent transition-colors"
+                  >
+                    +91 8470802035
+                  </a>
                 </div>
               </div>
 
@@ -166,14 +172,19 @@ export default function Contact() {
               </div>
 
               <div>
-                <h4 className="text-sm font-semibold text-accent mb-2 tracking-widest">
-                  BRANCH OFFICE
-                </h4>
-                <p className="text-foreground">
-                  I-406, Beta-II, Greater Noida
-                  <br />
-                  Gautam Budh Nagar, U.P.-201308
-                </p>
+                {/* Google Map Embed */}
+                <div className="rounded-lg overflow-hidden border border-border shadow mt-6">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13754.066839687732!2d77.02604875463662!3d28.61891531075132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d050009a6eb3b%3A0x4b1416755290db06!2sVishwakarma%20Interior%20%26%20Decorators!5e1!3m2!1sen!2sin!4v1769538393547!5m2!1sen!2sin"
+                    width="100%"
+                    height="250"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Vishwakarma Interior & Decorators Location"
+                  ></iframe>
+                </div>
               </div>
             </div>
           </div>
