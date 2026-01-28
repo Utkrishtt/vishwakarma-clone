@@ -1,15 +1,46 @@
-/**
- * Contact Component
- * Design: Simple contact form with company information
- * - Minimal form design with gold accents
- * - Contact details and map integration
- */
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 export default function Contact() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    alert("Thank you for your inquiry! We will contact you soon.");
+    setLoading(true);
+
+    emailjs.send(
+      "service_3kvwklu",
+      "template_i9ceypg",
+      {
+        from_name: form.name,
+        from_email: form.email,
+        phone: form.phone,
+        project_type: form.projectType,
+        message: form.message,
+        to_email: "utkrishtsharma1607@gmail.com",
+      },
+      "EIv8CDF_al67_DvJ9"
+    )
+    .then(() => {
+      alert("Thank you for your inquiry! We will contact you soon.");
+      setForm({ name: "", email: "", phone: "", projectType: "", message: "" });
+      setLoading(false);
+    })
+    .catch(() => {
+      alert("Something went wrong. Please try again later.");
+      setLoading(false);
+    });
   };
 
   return (
@@ -31,15 +62,21 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Contact Form */}
           <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6 bg-background p-8 rounded-xl shadow border border-border"
+            >
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Full Name
                 </label>
                 <input
                   type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-card border border-border text-foreground placeholder-secondary focus:outline-none focus:border-accent transition-colors"
+                  className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder-secondary focus:outline-none focus:border-accent transition-colors"
                   placeholder="Your name"
                 />
               </div>
@@ -50,8 +87,11 @@ export default function Contact() {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-card border border-border text-foreground placeholder-secondary focus:outline-none focus:border-accent transition-colors"
+                  className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder-secondary focus:outline-none focus:border-accent transition-colors"
                   placeholder="your@email.com"
                 />
               </div>
@@ -62,7 +102,10 @@ export default function Contact() {
                 </label>
                 <input
                   type="tel"
-                  className="w-full px-4 py-3 bg-card border border-border text-foreground placeholder-secondary focus:outline-none focus:border-accent transition-colors"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder-secondary focus:outline-none focus:border-accent transition-colors"
                   placeholder="+91 XXXXX XXXXX"
                 />
               </div>
@@ -71,7 +114,12 @@ export default function Contact() {
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Project Type
                 </label>
-                <select className="w-full px-4 py-3 bg-card border border-border text-foreground focus:outline-none focus:border-accent transition-colors">
+                <select
+                  name="projectType"
+                  value={form.projectType}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-background border border-border text-foreground focus:outline-none focus:border-accent transition-colors"
+                >
                   <option value="">Select a project type</option>
                   <option value="residential">Residential</option>
                   <option value="commercial">Commercial</option>
@@ -85,17 +133,21 @@ export default function Contact() {
                   Message
                 </label>
                 <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
                   rows={5}
-                  className="w-full px-4 py-3 bg-card border border-border text-foreground placeholder-secondary focus:outline-none focus:border-accent transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder-secondary focus:outline-none focus:border-accent transition-colors resize-none"
                   placeholder="Tell us about your project..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-accent text-background hover:bg-accent/90 transition-colors font-medium"
+                className="px-8 py-3 bg-accent text-background font-semibold rounded hover:bg-accent/90 transition"
+                disabled={loading}
               >
-                Send Inquiry
+                {loading ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>

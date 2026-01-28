@@ -11,11 +11,12 @@ export default function Navigation() {
     { label: "Services", href: "/services" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "Contact", href: "/contact" },
+    { label: "Blog", href: "/Blog" }, // <-- Add this line
   ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/40 backdrop-blur-sm border-b border-border">
-      <div className="container flex items-center justify-between h-20">
+      <div className="container flex items-center justify-between h-20 relative">
         {/* Logo */}
         <Link href="/">
           <a className="flex items-center gap-2 group">
@@ -33,6 +34,13 @@ export default function Navigation() {
             </div>
           </a>
         </Link>
+
+        {/* Centered Full Name on Mobile */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sm:hidden pointer-events-none select-none">
+          <span className="text-xs font-bold tracking-widest text-accent uppercase text-center whitespace-nowrap">
+            VISHWAKARMA INTERIOR & DECORATORS
+          </span>
+        </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
