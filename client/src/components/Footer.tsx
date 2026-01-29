@@ -87,7 +87,7 @@ export default function Footer() {
             </h3>
             <div className="rounded-lg overflow-hidden border border-border shadow">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13754.066839687732!2d77.02604875463662!3d28.61891531075132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d050009a6eb3b%3A0x4b1416755290db06!2sVishwakarma%20Interior%20%26%20Decorators!5e1!3m2!1sen!2sin!4v1769538393547!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14009.831591318376!2d77.02190144679558!3d28.61603547155343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d050009a6eb3b%3A0x4b1416755290db06!2sVishwakarma%20Interior%20%26%20Decorators!5e0!3m2!1sen!2sin!4v1769601644194!5m2!1sen!2sin"
                 width="100%"
                 height="150"
                 style={{ border: 0 }}

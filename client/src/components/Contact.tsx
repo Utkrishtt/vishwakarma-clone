@@ -11,7 +11,9 @@ export default function Contact() {
   });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -19,28 +21,35 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
 
-    emailjs.send(
-      "service_3kvwklu",
-      "template_i9ceypg",
-      {
-        from_name: form.name,
-        from_email: form.email,
-        phone: form.phone,
-        project_type: form.projectType,
-        message: form.message,
-        to_email: "utkrishtsharma1607@gmail.com",
-      },
-      "EIv8CDF_al67_DvJ9"
-    )
-    .then(() => {
-      alert("Thank you for your inquiry! We will contact you soon.");
-      setForm({ name: "", email: "", phone: "", projectType: "", message: "" });
-      setLoading(false);
-    })
-    .catch(() => {
-      alert("Something went wrong. Please try again later.");
-      setLoading(false);
-    });
+    emailjs
+      .send(
+        "service_3kvwklu",
+        "template_i9ceypg",
+        {
+          from_name: form.name,
+          from_email: form.email,
+          phone: form.phone,
+          project_type: form.projectType,
+          message: form.message,
+          to_email: "utkrishtsharma1607@gmail.com",
+        },
+        "EIv8CDF_al67_DvJ9"
+      )
+      .then(() => {
+        alert("Thank you for your inquiry! We will contact you soon.");
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          projectType: "",
+          message: "",
+        });
+        setLoading(false);
+      })
+      .catch(() => {
+        alert("Something went wrong. Please try again later.");
+        setLoading(false);
+      });
   };
 
   return (
@@ -67,10 +76,11 @@ export default function Contact() {
               className="space-y-6 bg-background p-8 rounded-xl shadow border border-border"
             >
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2" htmlFor="name">
                   Full Name
                 </label>
                 <input
+                  id="name"
                   type="text"
                   name="name"
                   value={form.name}
@@ -82,10 +92,11 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2" htmlFor="email">
                   Email Address
                 </label>
                 <input
+                  id="email"
                   type="email"
                   name="email"
                   value={form.email}
@@ -97,10 +108,11 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2" htmlFor="phone">
                   Phone Number
                 </label>
                 <input
+                  id="phone"
                   type="tel"
                   name="phone"
                   value={form.phone}
@@ -111,10 +123,11 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2" htmlFor="projectType">
                   Project Type
                 </label>
                 <select
+                  id="projectType"
                   name="projectType"
                   value={form.projectType}
                   onChange={handleChange}
@@ -129,10 +142,11 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2" htmlFor="message">
                   Message
                 </label>
                 <textarea
+                  id="message"
                   name="message"
                   value={form.message}
                   onChange={handleChange}
@@ -174,7 +188,6 @@ export default function Contact() {
                   className="text-foreground hover:text-accent transition-colors"
                 >
                   vishwakarma.interiors.7@gmail.com
-                  
                 </a>
                 <br />
                 <a
@@ -182,7 +195,6 @@ export default function Contact() {
                   className="text-foreground hover:text-accent transition-colors"
                 >
                   raj9871569819@gmail.com
-                  
                 </a>
               </div>
 
@@ -227,7 +239,7 @@ export default function Contact() {
                 {/* Google Map Embed */}
                 <div className="rounded-lg overflow-hidden border border-border shadow mt-6">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13754.066839687732!2d77.02604875463662!3d28.61891531075132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d050009a6eb3b%3A0x4b1416755290db06!2sVishwakarma%20Interior%20%26%20Decorators!5e1!3m2!1sen!2sin!4v1769538393547!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14009.831591318376!2d77.02190144679558!3d28.61603547155343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d050009a6eb3b%3A0x4b1416755290db06!2sVishwakarma%20Interior%20%26%20Decorators!5e0!3m2!1sen!2sin!4v1769601644194!5m2!1sen!2sin"
                     width="100%"
                     height="250"
                     style={{ border: 0 }}

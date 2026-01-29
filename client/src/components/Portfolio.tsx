@@ -5,6 +5,7 @@
  * - Hover effects revealing more information
  * - Asymmetric layout for visual interest
  */
+import {Link} from "wouter";
 
 const portfolioItems = [
   {
@@ -80,15 +81,15 @@ export default function Portfolio() {
           ))}
         </div>
 
+
         {/* CTA */}
-        <div className="mt-16 text-center">
-          <a
-            href="/portfolio"
-            className="inline-block px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-background transition-all duration-300 font-medium"
-          >
-            View All Projects
-          </a>
-        </div>
+<div className="mt-16 text-center">
+  <Link href="/portfolio">
+    <a className="inline-block px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-background transition-all duration-300 font-medium">
+      View All Projects
+    </a>
+  </Link>
+</div>
       </div>
     </section>
   );
